@@ -16,6 +16,8 @@ public class GameRunner {
 
     private final BoardGui board;
     private JFrame app;
+    private int Score;  			/** Secil */
+    private JLabel scoreLabel;		/** Secil */
 
     private GameRunner() throws InterruptedException {
         board = new BoardGui(30, 10);
@@ -23,6 +25,9 @@ public class GameRunner {
         newApp();
         app.add(board);
         app.add(new NextShapeGui(board));
+        setScore(0);							 		/** Secil */
+        scoreLabel= new JLabel("Score : " +Score);		/** Secil */
+        app.add(scoreLabel,0); 						 	/** Secil */    
         start();
     }
 
@@ -31,6 +36,8 @@ public class GameRunner {
         board.repaintBoard();
         while (!board.gameOver()) {
             board.tick();
+            setScore(board.getBoard().Score);			/** Secil */
+            scoreLabel.setText("Score : " +Score);   	/** Secil */        
             Thread.sleep(250);
         }
     }
@@ -79,6 +86,12 @@ public class GameRunner {
         new GameRunner();
     }
 
+    
+    /** Secil */
+    public void setScore(int i){
+    	this.Score = i;
+    }
+    
     private class NextShapeGui extends JPanel implements TickListener {
         Board board;
         List<CellGui> cells;
