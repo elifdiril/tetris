@@ -40,6 +40,8 @@ public class GameRunner {
         app.setLayout(new FlowLayout());
         app.setSize(500, 600);
         app.setLocation(200, 200);
+        JButton undoB = new JButton("Undo"); //Elif 
+        app.add( undoB );//Elif
         app.setVisible(true);
         app.setTitle("Tetris");
         app.addKeyListener(new ShapeMover());
