@@ -28,7 +28,9 @@ public class Board {
     private List<TickListener> tickListeners;
     private Shape nextShape;
     private RandomShapeGenerator randomShapeGenerator;
+    public int Score; /** Secil */
 
+  
     public Board(int rows, int columns) {
         this.rows = rows;
         this.columns = columns;
@@ -95,6 +97,8 @@ public class Board {
     }
 
     private void removeRow(int removeMe) {
+    	Score++;  /** Secil */
+    	
         for (int row = removeMe; row > 0; row--) {
             for (Cell cell : cellsInRow(row)) {
                 Cell cellAbove = getCell(row - 1, cell.column);
