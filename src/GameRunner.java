@@ -51,8 +51,6 @@ public class GameRunner {
         app.setLayout(new FlowLayout());
         app.setSize(500, 600);
         app.setLocation(200, 200);
-        JButton undoB = new JButton("Undo"); //Elif 
-        app.add( undoB );//Elif
         app.setVisible(true);
         app.setTitle("Tetris");
         app.addKeyListener(new ShapeMover());
@@ -69,6 +67,7 @@ public class GameRunner {
             if (e.getKeyCode() == KeyEvent.VK_LEFT) board.getBoard().moveShapeToLeft();
             if (e.getKeyCode() == KeyEvent.VK_RIGHT) board.getBoard().moveShapeToRight();
             if (e.getKeyCode() == KeyEvent.VK_UP) board.getBoard().rotateShapeAntiClockwise();
+            if(e.getKeyCode()==KeyEvent.VK_U)board.getBoard().undoMove(); /** Elif */
             if (e.getKeyCode() == KeyEvent.VK_DOWN) board.getBoard().rotateShapeClockwise();
             if (e.getKeyCode() == KeyEvent.VK_SPACE) {
                 while (board.getBoard().movingShapeCanMoveDown()) {
