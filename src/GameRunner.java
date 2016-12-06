@@ -32,6 +32,7 @@ public class GameRunner {
     }
 
     void start() throws InterruptedException {
+        startBackgroundSound();         /** Fatma */
         board.addNewShapeAtRandom();
         board.repaintBoard();
         while (!board.gameOver()) {
@@ -41,7 +42,10 @@ public class GameRunner {
             Thread.sleep(250);
         }
     }
-
+    /**Fatma*/
+    public void startBackgroundSound(){
+    	
+    }
     private void newApp() {
         app.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         app.setLayout(new FlowLayout());
