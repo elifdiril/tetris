@@ -63,6 +63,12 @@ public class Board {
         else
             gameOver = true;
     }
+      public void undoMove(){
+    	
+    	//undo move method
+    	
+    }/** Elif */
+
 
     private boolean canAddNewShape() {
         for (int row = START_ROW; row <= END_ROW; row++) {
