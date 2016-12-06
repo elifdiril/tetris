@@ -92,6 +92,7 @@ public class Board {
             }
             if (rowComplete) {
                 removeRow(row);
+                removeSound();/** Fatma */
             }
         }
     }
@@ -112,7 +113,10 @@ public class Board {
             }
         }
     }
-
+    /** Fatma */
+    public void removeSound(){
+    	/** row remove edildiginde sesi veren metod*/
+    }
     public List<Cell> movingShapeCells() {
         return mapper.shapeCellsAsList();
     }
