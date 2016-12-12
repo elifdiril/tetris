@@ -1,4 +1,5 @@
 import board.*;
+import util.Sound; /** Fatma */
 
 import javax.swing.*;
 import javax.swing.border.LineBorder;
@@ -18,7 +19,8 @@ public class GameRunner {
     private JFrame app;
     private int Score;  			/** Secil */
     private JLabel scoreLabel;		/** Secil */
-
+    private Sound sound; 		/** Fatma */
+    
     private GameRunner() throws InterruptedException {
         board = new BoardGui(30, 10);
         app = new JFrame();
@@ -27,7 +29,8 @@ public class GameRunner {
         app.add(new NextShapeGui(board));
         setScore(0);							 		/** Secil */
         scoreLabel= new JLabel("Score : " +Score);		/** Secil */
-        app.add(scoreLabel,0); 						 	/** Secil */    
+        app.add(scoreLabel,0); 						 	/** Secil */   
+        sound=new Sound();      /** Fatma */
         start();
     }
 
@@ -64,12 +67,25 @@ public class GameRunner {
 
         @Override
         public void keyPressed(KeyEvent e) {
-            if (e.getKeyCode() == KeyEvent.VK_LEFT) board.getBoard().moveShapeToLeft();
-            if (e.getKeyCode() == KeyEvent.VK_RIGHT) board.getBoard().moveShapeToRight();
-            if (e.getKeyCode() == KeyEvent.VK_UP) board.getBoard().rotateShapeAntiClockwise();
+            if (e.getKeyCode() == KeyEvent.VK_LEFT){
+                board.getBoard().moveShapeToLeft();
+                sound.play("move.wav");  /** Fatma */
+            }
+            if (e.getKeyCode() == KeyEvent.VK_RIGHT){
+                board.getBoard().moveShapeToRight();
+                sound.play("move.wav");  /** Fatma */
+            }
+            if (e.getKeyCode() == KeyEvent.VK_UP){
+                board.getBoard().rotateShapeAntiClockwise();
+                sound.play("rotate.wav");  /** Fatma */
+            }
             if(e.getKeyCode()==KeyEvent.VK_U)board.getBoard().undoMove(); /** Elif */
-            if (e.getKeyCode() == KeyEvent.VK_DOWN) board.getBoard().rotateShapeClockwise();
+            if (e.getKeyCode() == KeyEvent.VK_DOWN){
+                board.getBoard().rotateShapeClockwise();
+                sound.play("rotate.wav");  /** Fatma */
+            }
             if (e.getKeyCode() == KeyEvent.VK_SPACE) {
+                sound.play("space.wav");  /** Fatma */
                 while (board.getBoard().movingShapeCanMoveDown()) {
                     board.tick();
                 }
