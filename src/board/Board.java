@@ -7,6 +7,7 @@ import shapes.RandomShapeGenerator;
 import shapes.Shape;
 import util.ArrayCellCallback;
 import static util.Util.eachCell;
+import util.Sound; /**Fatma */
 
 import java.awt.*;
 import java.util.ArrayList;
@@ -29,12 +30,15 @@ public class Board {
     private Shape nextShape;
     private RandomShapeGenerator randomShapeGenerator;
     public int Score; /** Secil */
+    public Sound sound;/** Fatma */
 
   
     public Board(int rows, int columns) {
         this.rows = rows;
         this.columns = columns;
-
+        
+        sound=new Sound(); /** Fatma */
+        
         mapper = new ShapeLayoutToBoardCellMapper(this);
         tickListeners = new ArrayList<TickListener>();
         randomShapeGenerator = new RandomShapeGenerator();
@@ -62,6 +66,7 @@ public class Board {
         if (canAddNewShape()) mapper.setNewShape(shape);
         else
             gameOver = true;
+            sound.play("game_over.wav"); /** Fatma */
     }
       public void undoMove(){
     	
@@ -98,14 +103,13 @@ public class Board {
             }
             if (rowComplete) {
                 removeRow(row);
-                removeSound();/** Fatma */
             }
         }
     }
 
     private void removeRow(int removeMe) {
     	Score++;  /** Secil */
-    	
+    	sound.play("clear_line.wav");   /** Fatma */
         for (int row = removeMe; row > 0; row--) {
             for (Cell cell : cellsInRow(row)) {
                 Cell cellAbove = getCell(row - 1, cell.column);
@@ -118,10 +122,6 @@ public class Board {
                 }
             }
         }
-    }
-    /** Fatma */
-    public void removeSound(){
-    	/** row remove edildiginde sesi veren metod*/
     }
     public List<Cell> movingShapeCells() {
         return mapper.shapeCellsAsList();
