@@ -44,11 +44,18 @@ public class GameRunner {
             scoreLabel.setText("Score : " +Score);   	/** Secil */        
             Thread.sleep(250);
         }
+        stop();
     }
     /**Fatma*/
     public void startBackgroundSound(){
     	
     }
+    
+    /** Secil */
+    public void stop(){
+        //oyunu bitirecek method
+    }
+    
     private void newApp() {
         app.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         app.setLayout(new FlowLayout());
