@@ -29,6 +29,20 @@ public enum Movement {
         boolean allowMove(Cell cell, Board board) {
             return cell.column != board.getColumns() - 1;
         }},
+    UP {
+            @Override
+            int getRowChange() {
+                return -1;
+            }
+            @Override
+            int getColumnChange() {
+                return 0;
+            }
+            @Override
+            boolean allowMove(Cell cell, Board board) {
+                return cell.row != 0;
+            }}, /** Elif*/
+    
     Down {
         @Override
         int getRowChange() {
