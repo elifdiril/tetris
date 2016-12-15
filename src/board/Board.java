@@ -69,9 +69,12 @@ public class Board {
             sound.play("game_over.wav"); /** Fatma */
     }
       public void undoMove(){
-    	
-    	//undo move method
-    	
+    	  
+    	  moveShape(UP);
+          for (TickListener listener : tickListeners){
+              listener.boardHasTicked();
+              
+          }    	
     }/** Elif */
 
 
