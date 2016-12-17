@@ -53,7 +53,22 @@ public class GameRunner {
     
     /** Secil */
     public void stop(){
-        //oyunu bitirecek method
+        app.setVisible(false);
+        Object[] choices = {"Tekrar Oyna", "Çıkış"};
+        Object defaultChoice = choices[0];
+        int selected = JOptionPane.showOptionDialog(this.app, "", "GAME-OVER", JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE, new ImageIcon("gameover.png"), choices, defaultChoice);
+
+        System.out.println(selected);
+
+        if(selected==0){
+            try {
+                new GameRunner();
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
+        else
+            System.exit(0); 
     }
     
     private void newApp() {
